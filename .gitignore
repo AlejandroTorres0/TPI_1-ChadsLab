@@ -37,3 +37,11 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# Archivos y carpetas generados por IntelliJ IDEA
+.idea/
+out/
+
+# Archivos de build de otros sistemas (buena práctica)
+/build/
+*.class
