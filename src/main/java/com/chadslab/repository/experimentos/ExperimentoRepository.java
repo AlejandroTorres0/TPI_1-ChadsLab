@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface ExperimentoRepository {
 
-    void guardar(Experimento e);
+    Experimento guardar(Experimento e);
 
     void eliminar(Experimento e);
 

@@ -10,10 +10,14 @@ import java.util.stream.Collectors;
 
 public class ExperimentoRepositoryImpl implements ExperimentoRepository {
     List<Experimento> experimentos;
+    int proximoId = 1;
 
     @Override
-    public void guardar(Experimento e) {
+    public Experimento guardar(Experimento e) {
+        e.setId(proximoId++);
         experimentos.add(e);
+
+        return e;
     }
 
     @Override

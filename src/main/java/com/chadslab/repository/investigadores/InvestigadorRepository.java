@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface InvestigadorRepository {
-    void guardar(Investigador i);
+    Investigador guardar(Investigador i);
 
     void eliminar(Investigador i);
 
