@@ -5,8 +5,8 @@ import java.util.List;
 public class ExperimentoQuimico extends Experimento {
     private String instrumentoUtilizado;
 
-    public ExperimentoQuimico(int duracion, String nombre, Resultado resultado, List<Investigador> investigadores, String instrumentoUtilizado) {
-        super( duracion, nombre, resultado, investigadores);
+    public ExperimentoQuimico(int duracion, String nombre, Resultado resultado, String instrumentoUtilizado) {
+        super( duracion, nombre, resultado);
         this.instrumentoUtilizado = instrumentoUtilizado;
     }
 

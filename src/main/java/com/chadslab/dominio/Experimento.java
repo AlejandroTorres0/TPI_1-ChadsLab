@@ -9,12 +9,10 @@ public abstract class Experimento {
     private Resultado resultado;
     private List<Investigador> investigadores;
 
-    public Experimento(int duracion, String nombre, Resultado resultado, List<Investigador> investigadores) {
+    public Experimento(int duracion, String nombre, Resultado resultado) {
         this.duracion = duracion;
         this.nombre = nombre;
         this.resultado = resultado;
-        this.investigadores = investigadores;
-
     }
 
     public int getId() {
