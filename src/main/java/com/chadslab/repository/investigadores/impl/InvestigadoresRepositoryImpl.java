@@ -12,6 +12,10 @@ public class InvestigadoresRepositoryImpl implements InvestigadorRepository {
     List<Investigador> investigadores;
     int proximoId = 1;
 
+    public InvestigadoresRepositoryImpl() {
+        this.investigadores = new ArrayList<>();
+    }
+
     @Override
     public Investigador guardar(Investigador i) {
         i.setId(proximoId++);

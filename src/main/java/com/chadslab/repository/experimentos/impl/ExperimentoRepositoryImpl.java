@@ -12,6 +12,10 @@ public class ExperimentoRepositoryImpl implements ExperimentoRepository {
     List<Experimento> experimentos;
     int proximoId = 1;
 
+    public ExperimentoRepositoryImpl() {
+        this.experimentos = new ArrayList<>();
+    }
+
     @Override
     public Experimento guardar(Experimento e) {
         e.setId(proximoId++);
