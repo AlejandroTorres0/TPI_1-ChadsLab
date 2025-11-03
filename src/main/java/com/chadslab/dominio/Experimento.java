@@ -1,5 +1,6 @@
 package com.chadslab.dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Experimento {
@@ -13,6 +14,7 @@ public abstract class Experimento {
         this.duracion = duracion;
         this.nombre = nombre;
         this.resultado = resultado;
+        investigadores = new ArrayList<>();
     }
 
     public int getId() {
@@ -54,5 +56,14 @@ public abstract class Experimento {
 
     public void setInvestigadores(List<Investigador> investigadores) {
         this.investigadores = investigadores;
+    }
+
+    @Override
+    public String toString() {
+        return "EXPERIMENTO: " +
+                " duracion=" + duracion +
+                ", nombre='" + nombre + '\'' +
+                ", resultado=" + resultado +
+                ", investigadores=" + investigadores;
     }
 }

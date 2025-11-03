@@ -1,5 +1,6 @@
 package com.chadslab.dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Investigador implements IExportable {
@@ -7,6 +8,12 @@ public class Investigador implements IExportable {
     private String nombre;
     private int edad;
     private List<Experimento> experimentos;
+
+    public Investigador(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+        experimentos = new ArrayList<>();
+    }
 
     public int getId() {
         return id;
@@ -38,5 +45,17 @@ public class Investigador implements IExportable {
 
     public void setExperimentos(List<Experimento> experimentos) {
         this.experimentos = experimentos;
+    }
+
+    public void setExperimento(Experimento experimento) {
+        experimentos.add(experimento);
+    }
+
+    @Override
+    public String toString() {
+        return "INVESTIGADOR: " +
+                " nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", experimentos=" + experimentos;
     }
 }
