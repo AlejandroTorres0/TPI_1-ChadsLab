@@ -19,6 +19,11 @@ public class ExperimentoService {
         int totalDeExperimentos = experimentos.size();
         int sumaDeDuraciones = 0;
 
+        if  (totalDeExperimentos == 0) {
+            System.out.println("No se encontraron experimentos, no se puede calcular el promedio de duración");
+            return 0.0;
+        }
+
         for (Experimento experimento : experimentos) {
             sumaDeDuraciones = sumaDeDuraciones + experimento.getDuracion();
         }
@@ -30,6 +35,11 @@ public class ExperimentoService {
         List<Experimento> experimentos = experimentoRepository.getExperimentos();
         int totalDeExperimentos = experimentos.size();
         int experimentosExitosos = this.getExperimentosExitosos();
+
+        if (totalDeExperimentos == 0) {
+            System.out.println("No se encontraron experimentos, no se puede calcular el porcentaje de éxito");
+            return 0.0;
+        }
 
         return ((double) experimentosExitosos / totalDeExperimentos) * 100;
     }
