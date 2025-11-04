@@ -21,12 +21,12 @@ public class ArchivosInvestigadorServiceImpl implements ArchivosInvestigadorServ
         try {
             this.csvWriter = new CSVWriter(new FileWriter(ruta));
 
-            String[] encabezado = {"Nombre", "Edad"};
+            String[] encabezado = {"Nombre", "Edad", "Cantidad de experimentos"};
             this.csvWriter.writeNext(encabezado);
 
             for (Investigador investigador : investigadores) {
 
-                String[] datos = {investigador.getNombre(), String.valueOf(investigador.getEdad())};
+                String[] datos = {investigador.getNombre(), String.valueOf(investigador.getEdad()), String.valueOf(investigador.getExperimentos().size())};
                 this.csvWriter.writeNext(datos);
 
             }
