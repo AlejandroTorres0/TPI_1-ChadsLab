@@ -1,5 +1,7 @@
 package com.chadslab.utils.entradautils;
 
+import com.chadslab.dominio.Resultado;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -42,5 +44,16 @@ public class LectorConsola {
             lista.add(num);
         }
         return lista;
+    }
+
+    public Resultado leerResultado(String mensaje) {
+        int i = 0;
+        for (Resultado resultado : Resultado.values()) {
+            System.out.println((i + 1) + ". " + resultado.name());
+            i++;
+        }
+        int opcionResultado = this.leerInt(mensaje);
+        Resultado resultado = Resultado.values()[opcionResultado - 1];
+        return resultado;
     }
 }

@@ -77,7 +77,6 @@ public class MenuServiceImpl implements MenuService {
                 impresora.mostrarExperimentosPorTipoYResultado();
                 break;
             default:
-
                 break;
         }
     }
@@ -98,9 +97,6 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public void procesarRegistroExperimento() {
         String mensajeOpcionExp = "¿Qué tipo de experimento desea registrar?" + "\n" + "1. Químico" + "\n" + "2. Físico";
-        //System.out.println("¿Qué tipo de experimento desea registrar?");
-        //System.out.println("1. Químico");
-        //System.out.println("2. Físico");
         int opcion = lector.leerInt(mensajeOpcionExp);
 
         String mensajeNombre = "Ingrese el nombre del experimento";
@@ -109,23 +105,12 @@ public class MenuServiceImpl implements MenuService {
         String nombre = lector.leerString(mensajeNombre);
         int duracion = lector.leerInt(mensajeDuracion);
 
-        //Se debe factorizar
-        //---------------------------------------------------------
         String mensajeOpcionResultado = "Ingrese el resultado del experimento";
-        int i = 0;
-        for (Resultado resultado : Resultado.values()) {
-            System.out.println((i + 1) + ". " + resultado.name());
-            i++;
-        }
-        int opcionResultado = lector.leerInt(mensajeOpcionResultado);
-        Resultado resultado = Resultado.values()[opcionResultado - 1];
-
-        //---------------------------------------------------------
+        Resultado resultado = lector.leerResultado(mensajeOpcionResultado);
 
         String mensajeInves = "Ingrese las ids de los investigadores que participaron en el experimento, " +
                 "ingrese -1 para finalizar la carga de ids";
         List<Integer> idsInvestigadores = lector.leerIntLista(mensajeInves);
-        //---------------------------------------------------------
 
         Experimento experimentoAGuardar;
 
@@ -145,6 +130,8 @@ public class MenuServiceImpl implements MenuService {
 
             laboratorioService.registrarExperimentoAsociado(experimentoAGuardar, idsInvestigadores);
         }
-
+        else {
+            System.out.println("Error! Ingrese una opción correcta");
+        }
     }
 }
