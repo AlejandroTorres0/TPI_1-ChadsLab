@@ -22,8 +22,8 @@ public class ImpresoraImpl implements Impresora {
     public void mostrarReporteSimple() {
         System.out.println("Reporte Simple de experimentos");
         System.out.println("Promedio de duracion de los experimentos: " + experimentoService.promedioDuracion());
-        System.out.println("Porcebntaje de éxtio global: " + experimentoService.porcentajeExito());
-        //System.out.println("******************************");
+        System.out.println("Porcentaje de éxtio global: " + experimentoService.porcentajeExito());
+        System.out.println("--------------------------------");
 
     }
 
@@ -55,9 +55,14 @@ public class ImpresoraImpl implements Impresora {
     public void mostrarExperimentosPorTipoYResultado() {
         List<Experimento> experimentos = experimentoService.getExperimentos();
         System.out.println("Experimentos por Tipo y Resultado");
+        int i = 0;
         for (Experimento experimento : experimentos) {
-            System.out.println("Resultado: " + experimento.getResultado());
-            System.out.println("Tipo: " + experimento.getClass().getSimpleName());
+            System.out.println("EXPERIMENTO " + i + ":");
+            System.out.println("- Nombre: " + experimento.getNombre());
+            System.out.println("- Resultado: " + experimento.getResultado());
+            System.out.println("- Tipo: " + experimento.getClass().getSimpleName());
+            System.out.println("-------------------------------");
+            i++;
         }
     }
 }
