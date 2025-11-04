@@ -3,7 +3,7 @@ package com.chadslab.dominio;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Investigador implements IExportable {
+public class Investigador {
     private int id;
     private String nombre;
     private int edad;
