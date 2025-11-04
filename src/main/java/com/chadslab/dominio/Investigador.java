@@ -53,9 +53,9 @@ public class Investigador {
 
     @Override
     public String toString() {
-        return "INVESTIGADOR: " +
-                " nombre='" + nombre + '\'' +
-                ", edad=" + edad +
-                ", experimentos=" + experimentos;
+        return "INVESTIGADOR:" +
+                "-nombre: '" + nombre + '\n' +
+                "-edad: '" + edad + '\n' +
+                "-experimentos: " + experimentos + '\n';
     }
 }

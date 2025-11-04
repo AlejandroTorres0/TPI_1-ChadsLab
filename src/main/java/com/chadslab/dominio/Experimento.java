@@ -63,7 +63,6 @@ public abstract class Experimento {
         return "EXPERIMENTO: " +
                 " duracion=" + duracion +
                 ", nombre='" + nombre + '\'' +
-                ", resultado=" + resultado +
-                ", investigadores=" + investigadores;
+                ", resultado=" + resultado;
     }
 }
