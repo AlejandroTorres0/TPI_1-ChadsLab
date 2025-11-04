@@ -17,10 +17,19 @@ public class LaboratorioService {
     }
 
     public Experimento registrarExperimentoAsociado(Experimento e, List<Integer> idsInvestigadores) {
+        List<Investigador> investigadores;
 
-        List<Investigador> investigadores = investigadorRepository.getInvestigadoresPorIds(idsInvestigadores);
+        try {
+            investigadores = investigadorRepository.getInvestigadoresPorIds(idsInvestigadores);
+        } catch (Exception ex) {
+            System.out.println("Error al cargar el experimento: " + ex.getMessage());
+            return null;
+        }
 
-        //Validar si existen con un method que recorra la lista que devolvio y verifique las ids
+        if (investigadores.size() != idsInvestigadores.size()) {
+            System.out.println("No se encontraron todos los investigadores solicitados. IDs inválidos.");
+            return null;
+        }
 
         e.setInvestigadores(investigadores);
 

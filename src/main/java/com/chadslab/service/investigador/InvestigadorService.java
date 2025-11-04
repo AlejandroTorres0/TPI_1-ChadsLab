@@ -5,6 +5,7 @@ import com.chadslab.repository.investigadores.InvestigadorRepository;
 import com.chadslab.service.archivos.ArchivosInvestigadorService;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class InvestigadorService {
     private InvestigadorRepository investigadorRepository;
@@ -26,13 +27,19 @@ public class InvestigadorService {
         List<Investigador> investigadores = investigadorRepository.getInvestigadores();
         Investigador investigadorConMasExperimentos;
 
-        investigadorConMasExperimentos = investigadores.getFirst();
+        try {
+            investigadorConMasExperimentos = investigadores.getFirst();
+        }
+        catch (NoSuchElementException e) {
+            return null;
+        }
 
         for (Investigador investigador : investigadores) {
             if (investigadorConMasExperimentos.getExperimentos().size() < investigador.getExperimentos().size()) {
                 investigadorConMasExperimentos = investigador;
             }
         }
+
         return investigadorConMasExperimentos;
     }
 

@@ -42,8 +42,12 @@ public class ImpresoraImpl implements Impresora {
     public void mostrarInvestigadorConMasExperimentos() {
         Investigador investigadorConMasExperimentos = investigadorService.investigadorConMasExperimentos();
 
-        System.out.println("El investigador con más experimentos es: ");
-        System.out.println(investigadorConMasExperimentos);
+        if (investigadorConMasExperimentos == null) {
+            System.out.println("Investigador con mas experimentos no encontrado");
+        }else {
+            System.out.println("El investigador con más experimentos es: ");
+            System.out.println(investigadorConMasExperimentos);
+        }
 
     }
 
