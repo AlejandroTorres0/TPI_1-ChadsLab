@@ -18,12 +18,14 @@ public class InvestigadorServiceImpl implements InvestigadorService {
 
     }
 
+    @Override
     public void registrarInvestigador(String nombre, int edad) {
         Investigador investigador = new Investigador(nombre, edad);
 
         investigadorRepository.guardar(investigador);
     }
 
+    @Override
     public Investigador investigadorConMasExperimentos() {
         List<Investigador> investigadores = investigadorRepository.getInvestigadores();
         Investigador investigadorConMasExperimentos;
@@ -44,6 +46,7 @@ public class InvestigadorServiceImpl implements InvestigadorService {
         return investigadorConMasExperimentos;
     }
 
+    @Override
     public void exportarInvestigadoresCSV() {
 
         archivosInvestigadorService.exportarInvestigadoresCSV(investigadorRepository.getInvestigadores());

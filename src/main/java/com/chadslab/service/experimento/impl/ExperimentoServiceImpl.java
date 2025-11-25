@@ -15,6 +15,7 @@ public class ExperimentoServiceImpl implements ExperimentoService {
         this.experimentoRepository = experimentoRepository;
     }
 
+    @Override
     public double promedioDuracion() {
         List<Experimento> experimentos = experimentoRepository.getExperimentos();
         int totalDeExperimentos = experimentos.size();
@@ -32,6 +33,7 @@ public class ExperimentoServiceImpl implements ExperimentoService {
         return (double) sumaDeDuraciones / totalDeExperimentos;
     }
 
+    @Override
     public double porcentajeExito() {
         List<Experimento> experimentos = experimentoRepository.getExperimentos();
         int totalDeExperimentos = experimentos.size();
@@ -45,6 +47,7 @@ public class ExperimentoServiceImpl implements ExperimentoService {
         return ((double) experimentosExitosos / totalDeExperimentos) * 100;
     }
 
+    @Override
     public List<Integer> getExitososYFallidos() {
         List<Integer> exitososYFallidos = new ArrayList<>();
 
@@ -57,10 +60,12 @@ public class ExperimentoServiceImpl implements ExperimentoService {
         return exitososYFallidos;
     }
 
+    @Override
     public List<Experimento> getExperimentos() {
         return experimentoRepository.getExperimentos();
     }
 
+    @Override
     public int getExperimentosExitosos() {
         List<Experimento> experimentos = experimentoRepository.getExperimentos();
         int experimentosExitosos = 0;
@@ -74,6 +79,7 @@ public class ExperimentoServiceImpl implements ExperimentoService {
         return  experimentosExitosos;
     }
 
+    @Override
     public int getExperimentosFallidos() {
         List<Experimento> experimentos = experimentoRepository.getExperimentos();
         int experimentosFallidos = 0;

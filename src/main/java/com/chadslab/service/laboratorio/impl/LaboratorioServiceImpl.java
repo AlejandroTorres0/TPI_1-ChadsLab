@@ -17,6 +17,7 @@ public class LaboratorioServiceImpl implements LaboratorioService {
         this.experimentoRepository = experimentoRepository;
     }
 
+    @Override
     public Experimento registrarExperimentoAsociado(Experimento e, List<Integer> idsInvestigadores) {
         List<Investigador> investigadores;
 
