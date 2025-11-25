@@ -1,7 +1,7 @@
 package com.chadslab.service.menu.impl;
 
 import com.chadslab.dominio.*;
-import com.chadslab.service.LaboratorioService;
+import com.chadslab.service.laboratorio.LaboratorioService;
 import com.chadslab.service.experimento.ExperimentoService;
 import com.chadslab.service.investigador.InvestigadorService;
 import com.chadslab.utils.entradautils.LectorConsola;

@@ -1,17 +1,18 @@
-package com.chadslab.service;
+package com.chadslab.service.laboratorio.impl;
 
 import com.chadslab.dominio.Experimento;
 import com.chadslab.dominio.Investigador;
 import com.chadslab.repository.experimentos.ExperimentoRepository;
 import com.chadslab.repository.investigadores.InvestigadorRepository;
+import com.chadslab.service.laboratorio.LaboratorioService;
 
 import java.util.List;
 
-public class LaboratorioService {
+public class LaboratorioServiceImpl implements LaboratorioService {
     private InvestigadorRepository investigadorRepository;
     private ExperimentoRepository experimentoRepository;
 
-    public LaboratorioService(InvestigadorRepository investigadorRepository, ExperimentoRepository experimentoRepository) {
+    public LaboratorioServiceImpl(InvestigadorRepository investigadorRepository, ExperimentoRepository experimentoRepository) {
         this.investigadorRepository = investigadorRepository;
         this.experimentoRepository = experimentoRepository;
     }
