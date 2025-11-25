@@ -8,6 +8,7 @@ import com.chadslab.service.laboratorio.LaboratorioService;
 import com.chadslab.service.laboratorio.impl.LaboratorioServiceImpl;
 import com.chadslab.service.archivos.impl.ArchivosInvestigadorServiceImpl;
 import com.chadslab.service.experimento.ExperimentoService;
+import com.chadslab.service.experimento.impl.ExperimentoServiceImpl;
 import com.chadslab.service.investigador.InvestigadorService;
 import com.chadslab.service.investigador.impl.InvestigadorServiceImpl;
 import com.chadslab.service.menu.MenuService;
@@ -27,7 +28,7 @@ public class App {
         InvestigadorService investigadorService = new InvestigadorServiceImpl(investigadorRepository, archivosInvestigadorService);
 
         ExperimentoRepository experimentoRepository = new ExperimentoRepositoryImpl();
-        ExperimentoService experimentoService = new ExperimentoService(experimentoRepository);
+        ExperimentoService experimentoService = new ExperimentoServiceImpl(experimentoRepository);
 
 
         LaboratorioService laboratorioService = new LaboratorioServiceImpl(investigadorRepository, experimentoRepository);
