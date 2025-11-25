@@ -2,58 +2,16 @@ package com.chadslab.utils.entradautils;
 
 import com.chadslab.dominio.Resultado;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Scanner;
 
-public class LectorConsola {
-    private Scanner scanner;
+public interface LectorConsola {
 
-    public LectorConsola() {
-        this.scanner = new Scanner(System.in);
-    }
+    int leerInt(String mensaje);
 
-    public int leerInt(String mensaje) {
-        while (true) {
-            try {
-                System.out.println(mensaje);
-                int numero = Integer.parseInt(scanner.nextLine());
+    String leerString(String mensaje);
 
-                return numero;
-            } catch (InputMismatchException e) {
-                System.out.println("Error: Por favor ingrese un número válido");
-                scanner.nextLine();
-            }
-        }
-    }
+    List<Integer> leerIntLista(String mensaje);
 
-    public String leerString(String mensaje) {
-        System.out.println(mensaje);
-        return scanner.nextLine();
-    }
+    Resultado leerResultado(String mensaje);
 
-    public List<Integer> leerIntLista(String mensaje) {
-        List<Integer> lista = new ArrayList<>();
-        System.out.println(mensaje);
-        while (true) {
-            int num = leerInt("Id: ");
-            if (num == -1) {
-                break;
-            }
-            lista.add(num);
-        }
-        return lista;
-    }
-
-    public Resultado leerResultado(String mensaje) {
-        int i = 0;
-        for (Resultado resultado : Resultado.values()) {
-            System.out.println((i + 1) + ". " + resultado.name());
-            i++;
-        }
-        int opcionResultado = this.leerInt(mensaje);
-        Resultado resultado = Resultado.values()[opcionResultado - 1];
-        return resultado;
-    }
 }

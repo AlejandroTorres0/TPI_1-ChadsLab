@@ -14,13 +14,13 @@ import com.chadslab.service.investigador.impl.InvestigadorServiceImpl;
 import com.chadslab.service.menu.MenuService;
 import com.chadslab.service.menu.impl.MenuServiceImpl;
 import com.chadslab.utils.entradautils.LectorConsola;
+import com.chadslab.utils.entradautils.impl.LectorConsolaImpl;
 import com.chadslab.utils.salidautils.Impresora;
 import com.chadslab.utils.salidautils.impl.ImpresoraImpl;
 
 public class App {
     public static void main(String[] args) {
-        LectorConsola lectorConsola = new LectorConsola();
-
+        LectorConsola lectorConsola = new LectorConsolaImpl();
 
         ArchivosInvestigadorServiceImpl archivosInvestigadorService = new ArchivosInvestigadorServiceImpl();
 
