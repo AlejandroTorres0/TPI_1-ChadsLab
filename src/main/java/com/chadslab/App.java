@@ -1,9 +1,13 @@
 package com.chadslab;
 
+import com.chadslab.controller.LaboratorioFlowController;
+import com.chadslab.controller.impl.LaboratorioFlowControllerImpl;
 import com.chadslab.repository.experimentos.ExperimentoRepository;
 import com.chadslab.repository.experimentos.impl.ExperimentoRepositoryImpl;
 import com.chadslab.repository.investigadores.InvestigadorRepository;
 import com.chadslab.repository.investigadores.impl.InvestigadoresRepositoryImpl;
+import com.chadslab.service.experimento.factory.ExperimentoFactory;
+import com.chadslab.service.experimento.factory.impl.ExperimentoFactoryImpl;
 import com.chadslab.service.laboratorio.LaboratorioService;
 import com.chadslab.service.laboratorio.impl.LaboratorioServiceImpl;
 import com.chadslab.service.archivos.impl.ArchivosInvestigadorServiceImpl;
@@ -30,12 +34,14 @@ public class App {
         ExperimentoRepository experimentoRepository = new ExperimentoRepositoryImpl();
         ExperimentoService experimentoService = new ExperimentoServiceImpl(experimentoRepository);
 
-
-        LaboratorioService laboratorioService = new LaboratorioServiceImpl(investigadorRepository, experimentoRepository);
+        ExperimentoFactory experimentoFactory = new ExperimentoFactoryImpl();
+        LaboratorioService laboratorioService = new LaboratorioServiceImpl(investigadorRepository, experimentoRepository, experimentoFactory);
 
         Impresora impresora = new ImpresoraImpl(experimentoService, investigadorService);
 
-        MenuService menuService = new MenuServiceImpl(experimentoService, investigadorService, laboratorioService, lectorConsola, impresora);
+        LaboratorioFlowController laboratorioFlowController = new LaboratorioFlowControllerImpl(lectorConsola, laboratorioService, investigadorService);
+
+        MenuService menuService = new MenuServiceImpl(investigadorService, impresora, laboratorioFlowController);
 
         System.out.print("Bienvenido a ChadsLab ");
 

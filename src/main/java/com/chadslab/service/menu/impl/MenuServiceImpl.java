@@ -1,29 +1,22 @@
 package com.chadslab.service.menu.impl;
 
+import com.chadslab.controller.LaboratorioFlowController;
 import com.chadslab.dominio.*;
-import com.chadslab.service.laboratorio.LaboratorioService;
-import com.chadslab.service.experimento.ExperimentoService;
 import com.chadslab.service.investigador.InvestigadorService;
-import com.chadslab.utils.entradautils.LectorConsola;
 import com.chadslab.service.menu.MenuService;
 import com.chadslab.utils.salidautils.Impresora;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class MenuServiceImpl implements MenuService {
 
-    private LectorConsola lector;
-    private ExperimentoService experimentoService;
+    private LaboratorioFlowController laboratorioFlowController;
     private InvestigadorService investigadorService;
-    private LaboratorioService laboratorioService;
     private Impresora impresora;
 
-    public MenuServiceImpl(ExperimentoService experimentoService, InvestigadorService investigadorService, LaboratorioService laboratorioService, LectorConsola lector, Impresora impresora) {
-        this.lector = lector;
-        this.experimentoService = experimentoService;
+    public MenuServiceImpl(InvestigadorService investigadorService, Impresora impresora, LaboratorioFlowController laboratorioFlowController) {
+        this.laboratorioFlowController = laboratorioFlowController;
         this.investigadorService = investigadorService;
-        this.laboratorioService = laboratorioService;
         this.impresora = impresora;
 
     }
@@ -56,10 +49,10 @@ public class MenuServiceImpl implements MenuService {
     public void ejecutar(int opcion) {
         switch(opcion) {
             case 1:
-                this.procesarRegistroInvestigador();
+                laboratorioFlowController.registrarInvestigador();
                 break;
             case 2:
-                this.procesarRegistroExperimento();
+                laboratorioFlowController.registrarExperimento();
                 break;
             case 3:
                 impresora.mostrarExitososYFallidos();
@@ -78,60 +71,6 @@ public class MenuServiceImpl implements MenuService {
                 break;
             default:
                 break;
-        }
-    }
-
-    @Override
-    public void procesarRegistroInvestigador() {
-        String mensajeNombre = "Ingrese el nombre del investigador";
-        String mensajeEdad = "Ingrese la edad del investigador";
-
-        String nombre = lector.leerString(mensajeNombre);
-        int edad = lector.leerInt(mensajeEdad);
-
-        investigadorService.registrarInvestigador(nombre, edad);
-
-        System.out.println("El investigador se ha registrado correctamente");
-    }
-
-    @Override
-    public void procesarRegistroExperimento() {
-        String mensajeOpcionExp = "¿Qué tipo de experimento desea registrar?" + "\n" + "1. Químico" + "\n" + "2. Físico";
-        int opcion = lector.leerInt(mensajeOpcionExp);
-
-        String mensajeNombre = "Ingrese el nombre del experimento";
-        String mensajeDuracion = "Ingrese la duracion del experimento en minutos";
-
-        String nombre = lector.leerString(mensajeNombre);
-        int duracion = lector.leerInt(mensajeDuracion);
-
-        String mensajeOpcionResultado = "Ingrese el resultado del experimento";
-        Resultado resultado = lector.leerResultado(mensajeOpcionResultado);
-
-        String mensajeInves = "Ingrese las ids de los investigadores que participaron en el experimento, " +
-                "ingrese -1 para finalizar la carga de ids";
-        List<Integer> idsInvestigadores = lector.leerIntLista(mensajeInves);
-
-        Experimento experimentoAGuardar;
-
-        if (opcion == 1){
-            String mensajeInstrumentoUtilizado = "Ingrese el instrumento utilizado en el experimento";
-            String instrumentoUtilizado = lector.leerString(mensajeInstrumentoUtilizado);
-
-            experimentoAGuardar = new ExperimentoQuimico(duracion, nombre, resultado, instrumentoUtilizado);
-
-            laboratorioService.registrarExperimentoAsociado(experimentoAGuardar, idsInvestigadores);
-
-        } else if (opcion == 2) {
-            String mensajeTipoReactivo = "Ingrese el tipo de reactivo del experimento";
-            String tipoReactivo = lector.leerString(mensajeTipoReactivo);
-
-            experimentoAGuardar = new ExperimentoFisico(duracion, nombre, resultado, tipoReactivo);
-
-            laboratorioService.registrarExperimentoAsociado(experimentoAGuardar, idsInvestigadores);
-        }
-        else {
-            System.out.println("Error! Ingrese una opción correcta");
         }
     }
 }

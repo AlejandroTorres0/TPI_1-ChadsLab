@@ -6,7 +6,4 @@ public interface MenuService {
 
     void ejecutar(int opcion);
 
-    void procesarRegistroInvestigador();
-
-    void procesarRegistroExperimento();
 }
