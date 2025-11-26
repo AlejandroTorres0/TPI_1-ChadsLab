@@ -55,7 +55,7 @@ public class ImpresoraImpl implements Impresora {
     public void mostrarExperimentosPorTipoYResultado() {
         List<Experimento> experimentos = experimentoService.getExperimentos();
         System.out.println("Experimentos por Tipo y Resultado");
-        int i = 0;
+        int i = 1;
         for (Experimento experimento : experimentos) {
             System.out.println("EXPERIMENTO " + i + ":");
             System.out.println("- Nombre: " + experimento.getNombre());
